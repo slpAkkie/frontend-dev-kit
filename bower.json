@@ -1,0 +1,21 @@
+{
+  "name": "do-not-forget-to-change-project-name",
+  "description": "Don`t forget to change project description",
+  "main": "",
+  "authors": [
+    "slpMouse"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery": "^3.4.1",
+    "normalize.css": "normalize-css#^8.0.1"
+  }
+}
