@@ -1,1 +1,7 @@
-//= ../../bower_components/jquery/dist/jquery.min.js
+/**
+ * third-party scripts
+ */
+
+/**
+ * custom scripts
+ */

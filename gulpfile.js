@@ -18,8 +18,8 @@ const postcss = require( `gulp-postcss` )
 const rigger = require( `gulp-rigger` )
 
 const path = {
+  root: `./dist`,
   dist: {
-    root: `./dist`,
     html: `dist/`,
     js: `dist/js/`,
     css: `dist/css/`,
@@ -28,15 +28,22 @@ const path = {
   },
   src: {
     html: `src/*.html`,
-    js: `src/js/*js`,
+    js: `src/js/*.js`,
     style: `src/style/*.scss`,
     img: `src/img/**/*.*`,
     fonts: `src/fonts/**/*.*`
+  },
+  watch: {
+    html: [ `src/*.html`, `src/templates/*.html` ],
+    js: [ `src/js/**/*.js` ],
+    style: [ `src/style/**/*.scss` ],
+    img: [ `src/img/**/*.*` ],
+    fonts: [ `src/fonts/**/*.*` ]
   }
 }
 
 const config = {
-  server: { baseDir: path.dist.root },
+  server: { baseDir: path.root },
   tunnel: false,
   host: `localhost`,
   port: 9000,
@@ -48,12 +55,12 @@ gulp.task( `server:lunch`, function () {
 } );
 
 gulp.task( `clean`, function ( cb ) {
-  return rimraf( path.dist.root, cb );
+  return rimraf( path.root, cb );
 } );
 
 gulp.task( `html:build`, function () {
   return gulp.src( path.src.html )
-    .pipe( includer() )
+    .pipe( includer( { basePath: 'src/' } ) )
     .pipe( gulp.dest( path.dist.html ) )
     .pipe( reload( { stream: true } ) );
 } );
@@ -71,15 +78,9 @@ gulp.task( `js:build`, function () {
 gulp.task( `style:build`, function () {
   return gulp.src( path.src.style )
     .pipe( sourcemaps.init() )
-    .pipe( sass( {
-      sourceMap: true,
-      errLogToConsole: true
-    } ) )
+    .pipe( sass() )
     .pipe( postcss( [ autoprefixer() ] ) )
-    .pipe( csso( {
-      restructure: false,
-      sourceMap: true
-    } ) )
+    .pipe( csso() )
     .pipe( sourcemaps.write() )
     .pipe( rename( { suffix: `.min` } ) )
     .pipe( gulp.dest( path.dist.css ) )
@@ -105,11 +106,11 @@ gulp.task( `fonts:build`, function () {
 gulp.task( `build`, gulp.series( `html:build`, `js:build`, `style:build`, `fonts:build`, `image:build` ) );
 
 gulp.task( `watch`, function () {
-  gulp.watch( [ path.src.html ], gulp.series( `html:build` ) );
-  gulp.watch( [ path.src.style ], gulp.series( `style:build` ) );
-  gulp.watch( [ path.src.js ], gulp.series( `js:build` ) );
-  gulp.watch( [ path.src.img ], gulp.series( `image:build` ) );
-  gulp.watch( [ path.src.fonts ], gulp.series( `fonts:build` ) );
+  gulp.watch( [ ...path.watch.html ], gulp.series( `html:build` ) );
+  gulp.watch( [ ...path.watch.style ], gulp.series( `style:build` ) );
+  gulp.watch( [ ...path.watch.js ], gulp.series( `js:build` ) );
+  gulp.watch( [ ...path.watch.img ], gulp.series( `image:build` ) );
+  gulp.watch( [ ...path.watch.fonts ], gulp.series( `fonts:build` ) );
 } );
 
 gulp.task( `default`, gulp.series( `clean`, gulp.parallel( `build`, `server:lunch`, `watch` ) ) );
