@@ -1,21 +1,18 @@
 {
-  "name": "do-not-forget-to-change-project-name",
-  "description": "Don`t forget to change project description",
-  "main": "",
+  "name": "project-name",
+  "description": "project-description",
   "authors": [
-    "slpMouse"
+    "slpAkkie"
   ],
-  "license": "ISC",
-  "homepage": "",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
-    "bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ],
   "devDependencies": {
     "jquery": "^3.4.1",
-    "normalize.css": "normalize-css#^8.0.1"
+    "normalize.css": "normalize-css#^8.0.1",
+    "bootstrap4": "^4.4.1"
   }
 }
