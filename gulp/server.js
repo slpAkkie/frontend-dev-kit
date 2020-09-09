@@ -12,7 +12,7 @@ function readyReload( cb ) {
   cb()
 }
 
-module.exports = function ( cb ) {
+module.exports = ( cb ) => {
   server.init( {
     server: 'build',
     notify: false,

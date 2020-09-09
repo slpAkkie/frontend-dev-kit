@@ -1,6 +1,6 @@
 const del = require( 'del' )
 
-module.exports = function clean( cb ) {
+module.exports = ( cb ) => {
   return del( 'build' ).then( () => {
     cb()
   } )
