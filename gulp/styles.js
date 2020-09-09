@@ -6,7 +6,7 @@ const sourcemaps = require( 'gulp-sourcemaps' )
 const autoprefixer = require( 'gulp-autoprefixer' )
 const rename = require( "gulp-rename" )
 
-module.exports = function styles() {
+module.exports = () => {
   return gulp.src( 'src/styles/*.scss' )
     .pipe( plumber() )
     .pipe( sourcemaps.init() )
@@ -17,8 +17,6 @@ module.exports = function styles() {
     .pipe( cleanCSS( {
       debug: true,
       compatibility: '*'
-    }, details => {
-      console.log( `${details.name}: Original size:${details.stats.originalSize} - Minified size: ${details.stats.minifiedSize}` )
     } ) )
     .pipe( sourcemaps.write() )
     .pipe( rename( { suffix: '.min' } ) )
