@@ -1,13 +1,13 @@
 {
   "name": "frontendDevKit",
-  "version": "1.0.0",
+  "version": "0.1.4",
   "description": "My devKit for frontend apps",
   "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp devMode",
+    "cleanDev": "gulp cleanDev",
+    "dev": "gulp dev",
     "build": "gulp build",
-    "server": "gulp server",
-    "imageMinify": "gulp imageMinify"
+    "imgMin": "gulp imgMin"
   },
   "author": "slpAkkie",
   "license": "MIT",
