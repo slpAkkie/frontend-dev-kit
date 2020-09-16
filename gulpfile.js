@@ -10,12 +10,15 @@ const imageMinify = require( './gulp/imageMinify' )
 const clean = require( './gulp/clean' )
 
 
-const dev = gulp.parallel( pug2html, styles, script, fonts, imageMinify )
+const build = gulp.parallel( pug2html, styles, script, fonts, imageMinify )
 
-const build = gulp.series( clean, dev )
+const cleanBuild = gulp.series( clean, build )
 
-module.exports.imageMinify = gulp.series( ( cb ) => { return del( 'build/img' ).then( () => cb() ) }, imageMinify )
-module.exports.server = gulp.series( server )
+module.exports.cleanDev = gulp.series( cleanBuild, server )
+module.exports.dev = server
 
-module.exports.devMode = gulp.series( build, server )
-module.exports.build = gulp.series( build )
+module.exports.build = cleanBuild
+
+module.exports.imgMin = gulp.series( ( cb ) => {
+	return del( 'build/img' ).then( () => cb() )
+}, imageMinify )
