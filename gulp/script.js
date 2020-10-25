@@ -4,7 +4,7 @@ const sourcemaps = require( 'gulp-sourcemaps' )
 const rigger = require( 'gulp-rigger' )
 const uglify = require( 'gulp-uglify-es' ).default
 
-module.exports = () => {
+module.exports = function script() {
   return gulp.src( 'src/js/*.js' )
     .pipe( plumber() )
     .pipe( rigger() )

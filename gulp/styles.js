@@ -6,7 +6,7 @@ const sourcemaps = require( 'gulp-sourcemaps' )
 const autoprefixer = require( 'gulp-autoprefixer' )
 const rename = require( "gulp-rename" )
 
-module.exports = () => {
+module.exports = function style() {
   return gulp.src( 'src/styles/*.scss' )
     .pipe( plumber() )
     .pipe( sourcemaps.init() )
