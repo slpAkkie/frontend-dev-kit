@@ -10,7 +10,10 @@ module.exports = function script() {
     .pipe( plumber() )
     .pipe( rigger() )
     .pipe( sourcemaps.init() )
-    .pipe( babel() )
+    .pipe( babel( {
+      'presets': [ '@babel/env' ],
+      'plugins': [ '@babel/plugin-proposal-private-methods', '@babel/plugin-proposal-class-properties' ]
+    } ) )
     .pipe( uglify() )
     .pipe( sourcemaps.write() )
     .pipe( gulp.dest( 'build/js' ) )
