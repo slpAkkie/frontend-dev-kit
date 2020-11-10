@@ -4,6 +4,7 @@ const imageMinify = require( './imageMinify' )
 const styles = require( './styles' )
 const pug2html = require( './pug2html' )
 const script = require( './script' )
+const media = require( './media' )
 
 const bs = require( 'browser-sync' ).create()
 
