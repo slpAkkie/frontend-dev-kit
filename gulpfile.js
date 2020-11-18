@@ -9,9 +9,10 @@ const fonts = require( './gulp/fonts' )
 const imageMinify = require( './gulp/imageMinify' )
 const clean = require( './gulp/clean' )
 const media = require( './gulp/media' )
+const vendor = require( './gulp/vendor' )
 
 
-const build = gulp.parallel( pug2html, styles, script, fonts, imageMinify, media )
+const build = gulp.parallel( pug2html, styles, script, fonts, imageMinify, media, vendor )
 
 const cleanBuild = gulp.series( clean, build )
 

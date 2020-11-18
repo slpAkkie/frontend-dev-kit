@@ -5,6 +5,7 @@ const styles = require( './styles' )
 const pug2html = require( './pug2html' )
 const script = require( './script' )
 const media = require( './media' )
+const vendor = require( './vendor' )
 
 const bs = require( 'browser-sync' ).create()
 
@@ -26,6 +27,7 @@ module.exports = function server( cb ) {
   gulp.watch( 'src/js/**/*.js', gulp.series( script, readyReload ) )
   gulp.watch( 'src/pages/**/*.pug', gulp.series( pug2html, readyReload ) )
   gulp.watch( 'src/media/**/*.*', gulp.series( media, readyReload ) )
+  gulp.watch( 'vendor/**/*.*', gulp.series( vendor, readyReload ) )
 
   return cb()
 }
