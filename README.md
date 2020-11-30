@@ -1,8 +1,4 @@
-# frontend-dev-kit
-
-## Описание
-
-Это мой dev-kit для разработки frontend частей web-приложений и сайтов.
+# gulp-frontend
 
 ## Начало работы
 
@@ -13,12 +9,6 @@
 
 ```cmd
 cd /d Путь_к_папке
-```
-
-Для macOS команда похожа:
-
-```bash
-cd Путь_к_папке
 ```
 
 ### Зависимости
@@ -92,7 +82,7 @@ npm run imageMinify
 
 ## Автор
 
-@slpAkkie
+Alexandr Shamanin (@slpAkkie)
 
 ## Лицензия
 
