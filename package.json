@@ -1,5 +1,5 @@
 {
-  "name": "frontendDevKit",
+  "name": "gulp-frontend",
   "version": "0.1.4",
   "description": "My devKit for frontend apps",
   "main": "gulpfile.js",
