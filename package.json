@@ -1,7 +1,7 @@
 {
   "name": "gulp-frontend",
-  "version": "0.1.4",
-  "description": "My devKit for frontend apps",
+  "version": "1.0.0",
+  "description": "gulp конфиг для frontend сборки",
   "main": "gulpfile.js",
   "scripts": {
     "cleanDev": "gulp cleanDev",
